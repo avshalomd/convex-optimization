@@ -1,0 +1,4 @@
+whls/numpy-1.19.5+mkl-cp36-cp36m-win_amd64.whl
+whls/scs-2.1.2-cp36-cp36m-win_amd64.whl
+
+cvxpy==1.0.21
