@@ -55,9 +55,12 @@ if __name__ == '__main__':
         # Define an SDP program
         problem = cp.Problem(cp.Maximize(cp.trace(U @ X)), constraints)
 
-        start_t = time.perf_counter()
-        problem.solve(solver=cp.SCS, verbose=True)
-        final_time = time.perf_counter() - start_t
+        start_t = time.time()
+        if cp.__version__ == '1.0.21':
+            problem.solve(solver=cp.SCS, verbose=True)
+        else:
+            problem.solve(solver=cp.SCS, ignore_dpp=True, verbose=True)
+        final_time = time.time() - start_t
         print(f"({i+1}/{num_iterations}) {round(final_time*1000)}[ms]")
         solver_time.append(final_time)
 
